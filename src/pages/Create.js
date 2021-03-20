@@ -3,13 +3,19 @@ import Typography from '@material-ui/core/Typography';
 // OR "import { Typography } from 'material-ui/core/' "
 // import Material UI in two ways
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Container, makeStyles } from '@material-ui/core';
+import { Container, makeStyles, TextField } from '@material-ui/core';
 import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
 
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  field: {
+    marginTop: 20,
+    marginBottom: 20,
+    display: 'block',
+  },
+});
 
 export default function Create() {
+  const classes = useStyles();
   return (
     <Container>
       <Typography
@@ -20,7 +26,16 @@ export default function Create() {
       >
         Create a New Note
       </Typography>
-
+      <form noValidate autoComplete='off'>
+        <TextField
+          className={classes.field}
+          label='Note Title'
+          variant='outlined'
+          color='secondary'
+          fullWidth
+          required
+        />
+      </form>
       <Button
         onClick={() => console.log('You Clicked ME!!!!')}
         type='submit'
