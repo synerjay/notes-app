@@ -4,13 +4,30 @@ import Typography from '@material-ui/core/Typography';
 // import Material UI in two ways
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Container } from '@material-ui/core';
+import { Container, makeStyles } from '@material-ui/core';
 import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
 
+const useStyles = makeStyles({
+  btn: {
+    fontSize: 60,
+    backgroundColor: 'violet',
+    '&:hover': {
+      backgroundColor: 'blue',
+    },
+  },
+  title: {
+    textDecoration: 'underline',
+    marginBottom: 20,
+  },
+});
+
 export default function Create() {
+  const classes = useStyles();
+
   return (
     <Container>
       <Typography
+        className={classes.title}
         variant='h6'
         color='textSecondary'
         component='h2'
@@ -20,6 +37,7 @@ export default function Create() {
       </Typography>
 
       <Button
+        className={classes.btn}
         onClick={() => console.log('You Clicked ME!!!!')}
         type='submit'
         color='secondary'
