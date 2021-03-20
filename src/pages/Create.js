@@ -7,27 +7,12 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { Container, makeStyles } from '@material-ui/core';
 import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
 
-const useStyles = makeStyles({
-  btn: {
-    fontSize: 60,
-    backgroundColor: 'violet',
-    '&:hover': {
-      backgroundColor: 'blue',
-    },
-  },
-  title: {
-    textDecoration: 'underline',
-    marginBottom: 20,
-  },
-});
+const useStyles = makeStyles({});
 
 export default function Create() {
-  const classes = useStyles();
-
   return (
     <Container>
       <Typography
-        className={classes.title}
         variant='h6'
         color='textSecondary'
         component='h2'
@@ -37,7 +22,6 @@ export default function Create() {
       </Typography>
 
       <Button
-        className={classes.btn}
         onClick={() => console.log('You Clicked ME!!!!')}
         type='submit'
         color='secondary'
