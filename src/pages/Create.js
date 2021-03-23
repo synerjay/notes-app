@@ -14,6 +14,7 @@ import {
   TextField,
 } from '@material-ui/core';
 import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles({
   field: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles({
 
 export default function Create() {
   const classes = useStyles();
+  const history = useHistory();
 
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
@@ -48,7 +50,11 @@ export default function Create() {
     }
 
     if (title && details && category) {
-      console.log(title, details, category);
+      fetch('http://localhost:8000/notes', {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({ title, details, category }),
+      }).then(() => history.push('/')); // history.push reroutes user to root
     }
   };
 
