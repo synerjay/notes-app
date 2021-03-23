@@ -26,6 +26,7 @@ export default function Create() {
 
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
+  const [category, setCategory] = useState('todos');
 
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
@@ -83,10 +84,30 @@ export default function Create() {
           error={detailsError}
         />
 
-        <FormControlLabel value='todos' control={<Radio />} label="Todo's" />
-        <FormControlLabel value='money' control={<Radio />} label='Finance' />
-        <FormControlLabel value='money' control={<Radio />} label='Reminders' />
-        <FormControlLabel value='todos' control={<Radio />} label='Work' />
+        <FormControl className={classes.field}>
+          <FormLabel> Note Category </FormLabel>
+          <RadioGroup
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <FormControlLabel
+              value='todos'
+              control={<Radio />}
+              label="Todo's"
+            />
+            <FormControlLabel
+              value='money'
+              control={<Radio />}
+              label='Finance'
+            />
+            <FormControlLabel
+              value='reminders'
+              control={<Radio />}
+              label='Reminders'
+            />
+            <FormControlLabel value='todos' control={<Radio />} label='Work' />
+          </RadioGroup>
+        </FormControl>
 
         <Button
           onClick={() => console.log('You Clicked ME!!!!')}
