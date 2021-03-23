@@ -3,7 +3,14 @@ import Typography from '@material-ui/core/Typography';
 // OR "import { Typography } from 'material-ui/core/' "
 // import Material UI in two ways
 import Button from '@material-ui/core/Button';
-import { Container, makeStyles, TextField } from '@material-ui/core';
+import {
+  Container,
+  FormControl,
+  FormControlLabel,
+  makeStyles,
+  Radio,
+  TextField,
+} from '@material-ui/core';
 import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
 
 const useStyles = makeStyles({
@@ -75,6 +82,12 @@ export default function Create() {
           required
           error={detailsError}
         />
+
+        <FormControlLabel value='todos' control={<Radio />} label="Todo's" />
+        <FormControlLabel value='money' control={<Radio />} label='Finance' />
+        <FormControlLabel value='money' control={<Radio />} label='Reminders' />
+        <FormControlLabel value='todos' control={<Radio />} label='Work' />
+
         <Button
           onClick={() => console.log('You Clicked ME!!!!')}
           type='submit'
