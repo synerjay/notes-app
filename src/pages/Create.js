@@ -7,8 +7,10 @@ import {
   Container,
   FormControl,
   FormControlLabel,
+  FormLabel,
   makeStyles,
   Radio,
+  RadioGroup,
   TextField,
 } from '@material-ui/core';
 import KeyboardArrowRightOutlinedIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
@@ -45,8 +47,8 @@ export default function Create() {
       setDetailsError(true);
     }
 
-    if (title && details) {
-      console.log(title, details);
+    if (title && details && category) {
+      console.log(title, details, category);
     }
   };
 
@@ -105,7 +107,7 @@ export default function Create() {
               control={<Radio />}
               label='Reminders'
             />
-            <FormControlLabel value='todos' control={<Radio />} label='Work' />
+            <FormControlLabel value='work' control={<Radio />} label='Work' />
           </RadioGroup>
         </FormControl>
 
