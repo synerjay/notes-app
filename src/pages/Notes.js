@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container, Grid, Paper } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 
 export default function Notes() {
@@ -13,6 +13,7 @@ export default function Notes() {
   return (
     <Container>
       <Grid container spacing={3}>
+        {/* since 12 is the max columns in a row, the small screen gets 12 */}
         {notes.map((note) => (
           <Grid item xs={12} md={6} lg={4} key={note.id}>
             <Paper>{note.title}</Paper>
