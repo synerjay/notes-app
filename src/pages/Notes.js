@@ -9,7 +9,7 @@ export default function Notes() {
       .then((res) => res.json())
       .then((data) => setNotes(data));
   }, []);
-
+  // The container component creates padding and margins to its child items
   return (
     <Container>
       <Grid container spacing={3}>
