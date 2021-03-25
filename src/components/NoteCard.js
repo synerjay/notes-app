@@ -1,4 +1,10 @@
-import { Card, CardContent, CardHeader, IconButton } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  IconButton,
+  Typography,
+} from '@material-ui/core';
 import { DeleteOutlined } from '@material-ui/icons';
 import React from 'react';
 
@@ -8,12 +14,16 @@ function NoteCard({ note }) {
       <Card>
         <CardHeader
           action={
-            <IconButton>
+            <IconButton onClick={() => console.log('delete', note.title)}>
               <DeleteOutlined />
             </IconButton>
           }
+          title={note.title}
+          subheader={note.category}
         />
-        <CardContent>{note.details}</CardContent>
+        <CardContent>
+          <Typography>{note.details}</Typography>
+        </CardContent>
       </Card>
     </div>
   );
