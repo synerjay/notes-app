@@ -10,6 +10,15 @@ export default function Notes() {
       .then((res) => res.json())
       .then((data) => setNotes(data));
   }, []);
+
+  const handleDelete = async (id) => {
+    await fetch('http://localhost:8000/notes/' + id, {
+      method: 'DELETE',
+    });
+    const newNotes = notes.filter((note) => note.id != id);
+    setNotes(newNotes);
+  };
+
   // The container component creates padding and margins to its child items
   return (
     <Container>
@@ -17,7 +26,7 @@ export default function Notes() {
         {/* since 12 is the max columns in a row, the small screen gets 12 */}
         {notes.map((note) => (
           <Grid item xs={12} md={6} lg={4} key={note.id}>
-            <NoteCard note={note} />
+            <NoteCard note={note} handleDelete={handleDelete} />
           </Grid>
         ))}
       </Grid>

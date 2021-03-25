@@ -8,13 +8,13 @@ import {
 import { DeleteOutlined } from '@material-ui/icons';
 import React from 'react';
 
-function NoteCard({ note }) {
+function NoteCard({ note, handleDelete }) {
   return (
     <div>
-      <Card>
+      <Card elevation={3}>
         <CardHeader
           action={
-            <IconButton onClick={() => console.log('delete', note.title)}>
+            <IconButton onClick={() => handleDelete(note.id)}>
               <DeleteOutlined />
             </IconButton>
           }
@@ -22,7 +22,9 @@ function NoteCard({ note }) {
           subheader={note.category}
         />
         <CardContent>
-          <Typography>{note.details}</Typography>
+          <Typography variant='body2' color='textSecondary'>
+            {note.details}
+          </Typography>
         </CardContent>
       </Card>
     </div>
