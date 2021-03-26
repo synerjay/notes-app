@@ -11,7 +11,15 @@ const useStyles = makeStyles({
 const Layout = ({ children }) => {
   const classes = useStyles();
 
-  return <div className={classes.page}>{children}</div>;
+  return (
+    <div>
+      {/* app bar */}
+      <div>App bar</div>
+      {/* side bar */}
+      <div>Side bar</div>
+      <div className={classes.page}>{children} </div>
+    </div>
+  );
 };
 
 export default Layout;
