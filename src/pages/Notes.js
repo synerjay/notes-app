@@ -7,7 +7,7 @@ export default function Notes() {
 
   useEffect(() => {
     fetch('http://localhost:8000/notes') // must have the correct URL fect with notes
-      .then((res) => res.json())
+      .then((res) => res.json()) // .json() method needs to be there to convert the blob to coherent json data
       .then((data) => setNotes(data));
   }, []);
 
