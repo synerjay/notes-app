@@ -1,5 +1,15 @@
-import { Drawer, makeStyles, Typography } from '@material-ui/core';
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  makeStyles,
+  Typography,
+} from '@material-ui/core';
+import { AddCircleOutlineOutlined, SubjectOutlined } from '@material-ui/icons';
 import React from 'react';
+import { useHistory, useLocation } from 'react-router';
 
 const drawerWidth = 240;
 
@@ -17,10 +27,28 @@ const useStyles = makeStyles({
   drawerPaper: {
     width: drawerWidth,
   },
+  active: {
+    background: '#f4f4f4',
+  },
 });
 
 const Layout = ({ children }) => {
   const classes = useStyles();
+  const history = useHistory(); // this hook with .push method redirects user to another path -- similar to Link component or hyperlinks
+  const location = useLocation(); // this hook with .pathname method tells the current path of the user
+
+  const menuItems = [
+    {
+      text: 'My Notes',
+      icon: <SubjectOutlined color='secondary' />,
+      path: '/',
+    },
+    {
+      text: 'Create Note',
+      icon: <AddCircleOutlineOutlined color='secondary' />,
+      path: '/create',
+    },
+  ];
 
   return (
     <div className={classes.root}>
@@ -41,6 +69,19 @@ const Layout = ({ children }) => {
         </div>
 
         {/* Links/List section */}
+        <List>
+          {menuItems.map((item) => (
+            <ListItem
+              button
+              key={item.text}
+              onClick={() => history.push(item.path)}
+              className={location.pathname == item.path ? classes.active : null}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
+        </List>
       </Drawer>
       <div className={classes.page}>{children} </div>
     </div>
