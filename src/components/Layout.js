@@ -13,23 +13,29 @@ import { useHistory, useLocation } from 'react-router';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles({
-  page: {
-    background: '#f9f9f9',
-    width: '100%',
-  },
-  root: {
-    display: 'flex',
-  },
-  drawer: {
-    width: drawerWidth,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  active: {
-    background: '#f4f4f4',
-  },
+// We can access the built-in theme properties of material UI and tweak some properties to fit our needs
+// the 'theme' can be access by making the makeStyles into a function that returns the style properties
+// theme properties can be access by object access (theme.spacing)
+const useStyles = makeStyles((theme) => {
+  return {
+    page: {
+      background: '#f9f9f9',
+      width: '100%',
+      padding: theme.spacing(3),
+    },
+    root: {
+      display: 'flex',
+    },
+    drawer: {
+      width: drawerWidth,
+    },
+    drawerPaper: {
+      width: drawerWidth,
+    },
+    active: {
+      background: '#f4f4f4',
+    },
+  };
 });
 
 const Layout = ({ children }) => {
