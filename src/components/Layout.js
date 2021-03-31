@@ -1,15 +1,18 @@
 import {
+  AppBar,
   Drawer,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   makeStyles,
+  Toolbar,
   Typography,
 } from '@material-ui/core';
 import { AddCircleOutlineOutlined, SubjectOutlined } from '@material-ui/icons';
 import React from 'react';
 import { useHistory, useLocation } from 'react-router';
+import { format } from 'date-fns';
 
 const drawerWidth = 240;
 
@@ -36,9 +39,12 @@ const useStyles = makeStyles((theme) => {
       background: '#f4f4f4',
     },
     title: {
-      display: 'flex',
-      justifyContent: 'center',
+      padding: theme.spacing(3),
     },
+    appbar: {
+      width: `calc(100% - ${drawerWidth}px)`, // this will prevent the appbar from hiding the side
+    },
+    toolbar: theme.mixins.toolbar, // mixin is a collection of styles uses by material UI components - get the classes from the toolbar
   };
 });
 
@@ -63,7 +69,11 @@ const Layout = ({ children }) => {
   return (
     <div className={classes.root}>
       {/* App Bar */}
-      <div>App bar</div>
+      <AppBar elevation={0} className={classes.appbar}>
+        <Toolbar>
+          <Typography> Today is {format(new Date(), 'MMMM do Y')}</Typography>
+        </Toolbar>
+      </AppBar>
 
       {/* "Permanent" Side Drawer */}
       <Drawer
@@ -93,7 +103,11 @@ const Layout = ({ children }) => {
           ))}
         </List>
       </Drawer>
-      <div className={classes.page}>{children} </div>
+      {/* Make a div with class toolbar to prevent the toolbar from hiding the children. THINK OF THE CHILDREN! */}
+      <div className={classes.page}>
+        <div className={classes.toolbar}></div>
+        {children}
+      </div>
     </div>
   );
 };
