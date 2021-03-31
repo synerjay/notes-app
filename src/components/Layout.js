@@ -35,6 +35,10 @@ const useStyles = makeStyles((theme) => {
     active: {
       background: '#f4f4f4',
     },
+    title: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
   };
 });
 
