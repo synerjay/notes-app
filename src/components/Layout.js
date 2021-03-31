@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => {
     appbar: {
       width: `calc(100% - ${drawerWidth}px)`, // this will prevent the appbar from hiding the side
     },
+    date: {
+      flexGrow: 1, // giving flexgrow to Typography with classes date will push and give space as much as possible to the next possible element
+    },
     toolbar: theme.mixins.toolbar, // mixin is a collection of styles uses by material UI components - get the classes from the toolbar
   };
 });
@@ -70,8 +73,13 @@ const Layout = ({ children }) => {
     <div className={classes.root}>
       {/* App Bar */}
       <AppBar elevation={0} className={classes.appbar}>
+        {/* Toolbar is where we put text, icons, logos on the Appbar */}
         <Toolbar>
-          <Typography> Today is {format(new Date(), 'MMMM do Y')}</Typography>
+          <Typography className={classes.date}>
+            {' '}
+            Today is {format(new Date(), 'MMMM do Y')}
+          </Typography>
+          <Typography>Mario</Typography>
         </Toolbar>
       </AppBar>
 
