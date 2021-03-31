@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Avatar,
   Drawer,
   List,
   ListItem,
@@ -48,6 +49,9 @@ const useStyles = makeStyles((theme) => {
       flexGrow: 1, // giving flexgrow to Typography with classes date will push and give space as much as possible to the next possible element
     },
     toolbar: theme.mixins.toolbar, // mixin is a collection of styles uses by material UI components - get the classes from the toolbar
+    avatar: {
+      marginLeft: theme.spacing(2),
+    },
   };
 });
 
@@ -80,6 +84,7 @@ const Layout = ({ children }) => {
             Today is {format(new Date(), 'MMMM do Y')}
           </Typography>
           <Typography>Mario</Typography>
+          <Avatar className={classes.avatar} src='/mario-av.png' />
         </Toolbar>
       </AppBar>
 
