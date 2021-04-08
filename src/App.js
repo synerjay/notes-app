@@ -9,9 +9,11 @@ import Layout from './components/Layout';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#fefefe',
+      main: '#3e2723',
     },
-    secondary: purple,
+    secondary: {
+      main: '#8d6e63',
+    },
   },
   typography: {
     fontFamily: 'Quicksand',
