@@ -5,6 +5,8 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { purple } from '@material-ui/core/colors';
 import Layout from './components/Layout';
 
+// To start JSON server, use this command: // npx json-server --watch data/db.json --port 8000
+
 // To override the default theme properties, use createMuiTheme and Themeprovider
 const theme = createMuiTheme({
   palette: {
